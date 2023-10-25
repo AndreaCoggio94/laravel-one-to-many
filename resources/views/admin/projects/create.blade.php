@@ -58,6 +58,7 @@
                     <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror">
                     <option value="">Null</option>
                     @foreach ($types as $type)
+                        
                         <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}
                         </option>
                     @endforeach

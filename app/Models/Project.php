@@ -13,7 +13,7 @@ class Project extends Model
         "name",
         "description",
         "repository",
-        
+        "type_id",
     ] ;
 
     public function type() {
