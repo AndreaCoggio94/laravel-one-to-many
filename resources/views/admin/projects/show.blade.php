@@ -25,7 +25,27 @@
 
             </div>
         </div>
-        
+        <div class="row">
+            <div class="col">
+                <p> 
+                    <strong>Type ID: </strong> <br>
+                    {{$project->type->id ?? "null"}}
+                </p>
+            </div>
+            <div class="col">
+                <p> 
+                    <strong>Type Name: </strong> <br>
+                    {{$project->type->name ?? "null"}}
+                </p>
+            </div>
+            <div class="col">
+                <p> 
+                    <strong>Type Description: </strong> <br>
+                    {{$project->type->description ?? "null"}}
+                </p>
+            </div>
+        </div>
+
     </div>
 @endsection
 

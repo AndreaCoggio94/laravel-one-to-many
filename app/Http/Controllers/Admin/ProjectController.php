@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
+use App\Models\Type;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -75,7 +77,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("admin.projects.edit", compact("project"));
+        $types = Type::all();
+        return view("admin.projects.edit", compact("project","types"));
     }
 
     /**
@@ -121,6 +124,7 @@ class ProjectController extends Controller
             'name' => 'required|string',
             'description' => 'nullable|string',
             'repository' => 'nullable|string',
+            'type_id'=> 'nullable', 'exists:types,id',
           ],
           [
             'name.required' => 'The name is required',
@@ -129,6 +133,8 @@ class ProjectController extends Controller
             'description.string' => 'The description must be a string',
             
             'repository.string' => 'The thumb must be a url',
+
+            'type_id.exists'=> 'The inserted Type is not valid',
           ]
         )->validate();
       
